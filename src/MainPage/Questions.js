@@ -45,7 +45,8 @@ export default function Questions({
             visible={indexHQHidden.includes(index)}
             isAnswered={isAnswered} color={color}
             >
-                <HiddenQuestion index={index} imageButton={imageButton} propsOpenQuestion=
+                <HiddenQuestion index={index} imageButton={imageButton} isAnswered={isAnswered} color={color}
+                propsOpenQuestion=
                 {{
                     selecionado:indexHQHidden,
                     setSelecionado:setIndexHQHidden,

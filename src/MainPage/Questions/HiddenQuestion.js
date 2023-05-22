@@ -1,6 +1,7 @@
 import openQuestion from "./openQuestion";
 
-export default function HiddenQuestion({index,imageButton, propsOpenQuestion}) {
+export default function HiddenQuestion({index, imageButton, isAnswered, color, propsOpenQuestion}) {
+    let dataTest = "play-btn"
     return (
         <>
             <p data-test="flashcard-text">Pergunta {index + 1}</p>
