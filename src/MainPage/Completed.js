@@ -1,7 +1,10 @@
-export default function Completed({numberQuestions, allAnswers}){
+import SCIconsCompleted from "../styled-components/SCIconsCompleted";
+
+export default function Completed({numberQuestions, numberAnswers}){
+    
     return(
         <>
-            <p>{allAnswers.length}/{numberQuestions} CONCLUÍDOS</p>
+            <p>{numberAnswers}/{numberQuestions} CONCLUÍDOS</p>
         </>
     );
 }

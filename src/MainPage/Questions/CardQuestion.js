@@ -4,8 +4,8 @@ import openQuestion from "./openQuestion";
 export default function CardQuestion({question, index, propsOpenQuestion}){
     return(
         <>
-            <p>{question}</p>
-            <img src={virar} onClick={() => openQuestion(index, propsOpenQuestion)} />
+            <p data-test="flashcard-text">{question}</p>
+            <img src={virar} data-test="turn-btn" onClick={() => openQuestion(index, propsOpenQuestion)} />
         </>
     );
 }

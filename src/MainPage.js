@@ -17,17 +17,17 @@ export default function MainPage({cartas}) {
                 <h1>ZapRecall</h1>
             </SCHeader>
             {cartas.map((card, i) => 
-            <SCQuestions>
+            <SCQuestions data-test="flashcard">
                 <Questions 
                 carta={card} index={i} 
                 allAnswers={allAnswers} setAllAnswers={setAllAnswers} 
                 />
             </SCQuestions>
             )}
-            <SCCompleted>
+            <SCCompleted data-test="footer">
                 <Completed 
-                numberQuestions={cartas.length} 
-                allAnswers={allAnswers}
+                numberQuestions={cartas.length}
+                numberAnswers={allAnswers.length}
                 />
             </SCCompleted>
         </>

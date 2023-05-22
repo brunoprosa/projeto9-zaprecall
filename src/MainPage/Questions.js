@@ -10,7 +10,9 @@ import wrong from "../assets/icone_erro.png";
 import almost from "../assets/icone_quase.png";
 import correct from "../assets/icone_certo.png";
 
-export default function Questions({carta, index, allAnswers, setAllAnswers}) {
+export default function Questions({
+    carta, index, allAnswers, setAllAnswers
+}) {
 
     const [indexHQHidden, setIndexHQHidden] = useState([]);
     const [indexCQHidden, setIndexCQHidden] = useState([0,1,2,3,4,5,6,7]);
