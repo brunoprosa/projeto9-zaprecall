@@ -1,25 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import Splash from './Splash';
+import MainPage from './MainPage';
+import SCMainPage from './styled-components/SCMainPage';
+import GlobalStyle from './styled-components/globalStyles';
+import cards from "./assets/cards";
+import { useState } from "react";
 
-function App() {
+export default function App() {
+  // <Splash embaralharCards={() => embaralharCards(cards)}/>
+  const [cartas, setCartas] = useState(cards);
+  const [isVisible, setIsVisible] = useState(true);
+
+  function embaralharCards(cards) {
+
+    function randomizar() {
+      return Math.random() - 0.5;
+    }
+    
+    setCartas(cards.sort(randomizar));
+    setIsVisible(false);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyle />
+
+      <SCMainPage isVisible={isVisible}>
+        <MainPage cartas={cartas} />
+      </SCMainPage>
+    </>
   );
 }
-
-export default App;
