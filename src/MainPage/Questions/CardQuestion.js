@@ -1,10 +1,11 @@
 import virar from "../../assets/seta_virar.png"
+import openQuestion from "./openQuestion";
 
-export default function CardQuestion(){
+export default function CardQuestion({question, index, propsOpenQuestion}){
     return(
         <>
-            <p>O que é JSX?</p>
-            <img src={virar}/>
+            <p>{question}</p>
+            <img src={virar} onClick={() => openQuestion(index, propsOpenQuestion)} />
         </>
     );
 }

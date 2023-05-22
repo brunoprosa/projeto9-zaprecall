@@ -10,6 +10,8 @@ background-color: #FFFFD5;
 box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.15);
 border-radius: 5px;
 
+display: ${props => !props.visible ? "flex" : "none"};
+
 position: relative;
 
 p{

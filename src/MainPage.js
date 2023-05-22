@@ -16,9 +16,11 @@ export default function MainPage(props) {
                 <img src={logo} />
                 <h1>ZapRecall</h1>
             </SCHeader>
+            {props.cartas.map((card, i) => 
             <SCQuestions>
-                <Questions cartas={props.cartas} />
+                <Questions carta={card} index={i}  />
             </SCQuestions>
+            )}
             <SCCompleted>
                 <Completed />
             </SCCompleted>

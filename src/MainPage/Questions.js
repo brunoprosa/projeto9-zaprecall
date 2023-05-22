@@ -7,26 +7,48 @@ import CardQuestion from "./Questions/CardQuestion";
 import HiddenQuestion from "./Questions/HiddenQuestion";
 
 
-export default function Questions(props) {
+export default function Questions({carta, index}) {
 
-    const [indexHQHidden, setindexHQHidden] = useState([]);
-    const [indexCQHidden, setindexCQHidden] = useState([]);
-    const [indexCAHidden, setindexCAHidden] = useState([]);
-    const [answer, setAnswer] = useState([]);
+    const [indexHQHidden, setIndexHQHidden] = useState([]);
+    const [indexCQHidden, setIndexCQHidden] = useState([0,1,2,3,4,5,6,7]);
+    const [indexCAHidden, setIndexCAHidden] = useState([0,1,2,3,4,5,6,7]);
+    const [allAnswers, setAllAnswers] = useState([]);
 
     return (
         <ul>
-            
-            <SCHiddenQuestion>
-                <HiddenQuestion />
+            <SCHiddenQuestion visible={indexHQHidden.includes(index)} >
+                <HiddenQuestion index={index} propsOpenQuestion=
+                {{
+                    selecionado:indexHQHidden,
+                    setSelecionado:setIndexHQHidden,
+                    toOpen:indexCQHidden,
+                    setToOpen:setIndexCQHidden
+                }}/>
             </SCHiddenQuestion>
 
-            <SCCardQuestion>
-                <CardQuestion />
+            <SCCardQuestion visible={indexCQHidden.includes(index)} >
+                <CardQuestion question={carta.question} index={index} propsOpenQuestion=
+                {{
+                    selecionado:indexCQHidden,
+                    setSelecionado:setIndexCQHidden,
+                    toOpen:indexCAHidden,
+                    setToOpen:setIndexCAHidden
+                }} />
             </SCCardQuestion>
 
-            <SCCardAnswer>
-                <CardAnswer />
+            <SCCardAnswer visible={indexCAHidden.includes(index)}>
+                <CardAnswer answer={carta.answer} index={index} propsFinalAnswer=
+                {{
+                    allAnswers:allAnswers,
+                    setAllAnswers:setAllAnswers,
+                    propsOpenQuestion:
+                    {
+                    selecionado:indexCAHidden,
+                    setSelecionado:setIndexCAHidden,
+                    toOpen:indexHQHidden,
+                    setToOpen:setIndexHQHidden
+                    }
+                }} />
             </SCCardAnswer>
         </ul>
     );
