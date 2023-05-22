@@ -5,19 +5,45 @@ import SCHiddenQuestion from "../styled-components/SCHiddenQuestion";
 import CardAnswer from "./Questions/CardAnswer";
 import CardQuestion from "./Questions/CardQuestion";
 import HiddenQuestion from "./Questions/HiddenQuestion";
+import play from "../assets/seta_play.png";
+import wrong from "../assets/icone_erro.png";
+import almost from "../assets/icone_quase.png";
+import correct from "../assets/icone_certo.png";
 
-
-export default function Questions({carta, index}) {
+export default function Questions({carta, index, allAnswers, setAllAnswers}) {
 
     const [indexHQHidden, setIndexHQHidden] = useState([]);
     const [indexCQHidden, setIndexCQHidden] = useState([0,1,2,3,4,5,6,7]);
     const [indexCAHidden, setIndexCAHidden] = useState([0,1,2,3,4,5,6,7]);
-    const [allAnswers, setAllAnswers] = useState([]);
+    let isAnswered = false;
+    let color = "#333333";
+    let imageButton = play;
+
+    if(allAnswers.filter(e => e.index === index).length > 0){
+        isAnswered = true;
+        let aux = allAnswers.filter(e => e.index === index);
+        let grade = aux[0].grade;
+        if(grade === "incorrect") {
+            color = "#FF3030";
+            imageButton = wrong;
+        }
+        if(grade === "partially-correct"){ 
+            color = "#FF922E";
+            imageButton = almost
+        }
+        if(grade === "correct") {
+            color = "#2FBE34";
+            imageButton = correct;
+        }
+    }
 
     return (
         <ul>
-            <SCHiddenQuestion visible={indexHQHidden.includes(index)} >
-                <HiddenQuestion index={index} propsOpenQuestion=
+            <SCHiddenQuestion 
+            visible={indexHQHidden.includes(index)}
+            isAnswered={isAnswered} color={color}
+            >
+                <HiddenQuestion index={index} imageButton={imageButton} propsOpenQuestion=
                 {{
                     selecionado:indexHQHidden,
                     setSelecionado:setIndexHQHidden,

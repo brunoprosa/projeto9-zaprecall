@@ -16,7 +16,8 @@ const SCHiddenQuestion = styled.li`
     p{
         font-weight: 700;
         font-size: 16px;
-        color: #333333;
+        color: ${props => props.color};
+        text-decoration: ${props => props.isAnswered ? "line-through" : "none"};
     }
 
     img{

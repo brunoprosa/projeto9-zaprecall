@@ -1,7 +1,7 @@
-export default function Completed(){
+export default function Completed({numberQuestions, allAnswers}){
     return(
         <>
-            <p>0/4 CONCLUÍDOS</p>
+            <p>{allAnswers.length}/{numberQuestions} CONCLUÍDOS</p>
         </>
     );
 }

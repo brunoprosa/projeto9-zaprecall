@@ -6,9 +6,9 @@ import SCCompleted from "./styled-components/SCCompleted";
 import Completed from "./MainPage/Completed";
 import { useState } from "react";
 
-export default function MainPage(props) {
+export default function MainPage({cartas}) {
 
-    const [answers, setAnswers] = useState([]);
+    const [allAnswers, setAllAnswers] = useState([]);
 
     return (
         <>
@@ -16,13 +16,19 @@ export default function MainPage(props) {
                 <img src={logo} />
                 <h1>ZapRecall</h1>
             </SCHeader>
-            {props.cartas.map((card, i) => 
+            {cartas.map((card, i) => 
             <SCQuestions>
-                <Questions carta={card} index={i}  />
+                <Questions 
+                carta={card} index={i} 
+                allAnswers={allAnswers} setAllAnswers={setAllAnswers} 
+                />
             </SCQuestions>
             )}
             <SCCompleted>
-                <Completed />
+                <Completed 
+                numberQuestions={cartas.length} 
+                allAnswers={allAnswers}
+                />
             </SCCompleted>
         </>
     );
